@@ -1,23 +1,25 @@
 import React from "react"
-import PropTypes from "prop-types"
 import Studend from "./studend"
 
-const StudentComponent = ({ data }) => {
-    const dataStudents = data;
+function StudentComponent ({data}) {
+    const dataStudents = data
+    const listData = dataStudents.map((element) => {
+        console.log(element.name);
+        return (
+            <Studend
+                name={element.name}
+                career={element.career}
+                generation={element.generation}
+                portfolio={element.portfolio}
+                social={element.social}
+                avatar={element.avatar}
+            />
+        )
+    })
     return (
-        <div>
-          {dataStudents.map(({ node }) => (
-              <Studend
-              name={node.name}
-              career={node.career}
-              generation={node.generation}
-              portfolio={node.portfolio}
-              social={node.social}
-              avatar={node.avatar}
-              />
-          ))}
-        </div>
-    );
+        <ul>{listData}</ul>
+    )
 };
+
 
 export default StudentComponent
